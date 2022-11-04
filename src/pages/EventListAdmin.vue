@@ -27,14 +27,6 @@ export default {
     },
   },
   async mounted() {
-    onAuthStateChanged(getAuth(), (user) => {
-      if (user) {
-        console.log(user);
-        this.getData(user.displayName);
-      } else {
-        window.location.href = "/login";
-      }
-    });
   },
 };
 </script>

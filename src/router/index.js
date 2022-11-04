@@ -1,12 +1,14 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Home from "../pages/Home.vue";
-import Login from "../pages/Login.vue";
+import LoginAdmin from "../pages/LoginAdmin.vue";
 import HomeAdmin from "../pages/HomeAdmin.vue";
 import AddEvent from "../pages/AddEvent.vue";
 import EventListAdmin from "../pages/EventListAdmin.vue";
 import AllEvents from "../pages/AllEvents.vue";
 import DetailEvent from "../pages/Details.vue";
 import EventDetailAdmin from "../pages/EventDetailAdmin.vue";
+import Login from "../pages/LoginUser.vue";
+import RegisterUser from "../pages/RegisterUser.vue";
 
 const routes = [
   {
@@ -15,9 +17,19 @@ const routes = [
     component: Home,
   },
   {
+    path: "/login-admin",
+    name: "LoginAdmin",
+    component: LoginAdmin,
+  },
+  {
     path: "/login",
     name: "Login",
     component: Login,
+  },
+  {
+    path: "/register",
+    name: "Register",
+    component: RegisterUser,
   },
   {
     path: "/events",

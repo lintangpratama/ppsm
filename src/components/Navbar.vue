@@ -105,7 +105,7 @@
                   focus:ring-white
                 "
               >
-                <router-link to="/login"> Login as Organizer </router-link>
+                <router-link to="/login-admin"> Login as Organizer </router-link>
               </MenuButton>
             </div>
           </Menu>

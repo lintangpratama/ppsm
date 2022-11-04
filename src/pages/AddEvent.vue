@@ -380,13 +380,6 @@ export default {
     };
   },
   mounted() {
-    onAuthStateChanged(getAuth(), (user) => {
-      if (user) {
-        console.log(user);
-      } else {
-        window.location.href = "/login";
-      }
-    });
   },
   methods: {
     onFileChange(event) {

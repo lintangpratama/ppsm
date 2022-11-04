@@ -300,14 +300,6 @@ export default {
     };
   },
   mounted() {
-    onAuthStateChanged(getAuth(), (user) => {
-      if (user) {
-        console.log(user);
-        this.getEventData();
-      } else {
-        window.location.href = "/login";
-      }
-    });
   },
   methods: {
     async getEventData() {

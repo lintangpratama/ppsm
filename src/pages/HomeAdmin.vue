@@ -28,14 +28,5 @@ export default {
         });
     },
   },
-  beforeCreate() {
-    onAuthStateChanged(getAuth(), (user) => {
-      if (user) {
-        console.log(user);
-      } else {
-        window.location.href = "/login";
-      }
-    });
-  },
 };
 </script>
