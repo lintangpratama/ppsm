@@ -1,8 +1,6 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-  <Disclosure
-    as="nav"
-    class="
+  <Disclosure as="nav" class="
       bg-white bg-opacity-50
       backdrop-blur backdrop-filter
       shadow-sm
@@ -10,15 +8,12 @@
       sticky
       z-50
       top-0
-    "
-    v-slot="{ open }"
-  >
+    " v-slot="{ open }">
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
       <div class="relative flex items-center justify-between h-16">
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
           <!-- Mobile menu button-->
-          <DisclosureButton
-            class="
+          <DisclosureButton class="
               inline-flex
               items-center
               justify-center
@@ -27,55 +22,36 @@
               text-gray-400
               hover:text-white hover:bg-gray-700
               focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white
-            "
-          >
+            ">
             <span class="sr-only">Open main menu</span>
             <MenuIcon v-if="!open" class="block h-6 w-6" aria-hidden="true" />
             <XIcon v-else class="block h-6 w-6" aria-hidden="true" />
           </DisclosureButton>
         </div>
-        <div
-          class="
+        <div class="
             flex-1 flex
             items-center
             justify-center
             sm:items-stretch sm:justify-start
-          "
-        >
-          <router-link to="/admin">
+          ">
+          <router-link to="/home">
             <div class="flex-shrink-0 flex items-center">
-              <img
-                class="block lg:hidden h-8 w-auto"
-                src="../assets/logo.svg"
-                alt="Workflow"
-              />
-              <img
-                class="hidden lg:block h-8 w-auto"
-                src="../assets/logo-with-text.svg"
-                alt="Workflow"
-              />
+              <img class="block lg:hidden h-8 w-auto" src="../assets/logo.svg" alt="Workflow" />
+              <img class="hidden lg:block h-8 w-auto" src="../assets/logo-with-text.svg" alt="Workflow" />
             </div>
           </router-link>
           <div class="hidden sm:block sm:ml-6">
             <div class="flex space-x-4">
-              <a
-                v-for="item in navigation"
-                :key="item.name"
-                :href="item.href"
-                :class="[
-                  item.current
-                    ? 'bg-gray-900 text-white'
-                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                  'px-3 py-2 rounded-md text-sm font-medium',
-                ]"
-                :aria-current="item.current ? 'page' : undefined"
-                >{{ item.name }}</a
-              >
+              <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[
+                item.current
+                  ? 'bg-main text-white'
+                  : 'text-gray-300 hover:bg-main hover:text-white',
+                'px-3 py-2 rounded-md text-sm font-medium',
+              ]" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</a>
             </div>
           </div>
         </div>
-        <div
-          class="
+        <div class="
             absolute
             inset-y-0
             right-0
@@ -83,13 +59,11 @@
             items-center
             pr-2
             sm:static sm:inset-auto sm:ml-6 sm:pr-0
-          "
-        >
+          ">
           <!-- Profile dropdown -->
           <Menu as="div" class="ml-3 relative">
             <div>
-              <MenuButton
-                class="
+              <MenuButton class="
                   bg-gray-800
                   flex
                   text-sm
@@ -99,26 +73,18 @@
                   focus:ring-offset-2
                   focus:ring-offset-gray-800
                   focus:ring-white
-                "
-              >
+                ">
                 <span class="sr-only">Open user menu</span>
-                <img
-                  class="h-8 w-8 rounded-full"
+                <img class="h-8 w-8 rounded-full"
                   src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                  alt=""
-                />
+                  alt="" />
               </MenuButton>
             </div>
-            <transition
-              enter-active-class="transition ease-out duration-100"
-              enter-from-class="transform opacity-0 scale-95"
-              enter-to-class="transform opacity-100 scale-100"
-              leave-active-class="transition ease-in duration-75"
-              leave-from-class="transform opacity-100 scale-100"
-              leave-to-class="transform opacity-0 scale-95"
-            >
-              <MenuItems
-                class="
+            <transition enter-active-class="transition ease-out duration-100"
+              enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100"
+              leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100"
+              leave-to-class="transform opacity-0 scale-95">
+              <MenuItems class="
                   origin-top-right
                   absolute
                   right-0
@@ -130,38 +96,24 @@
                   bg-white
                   ring-1 ring-black ring-opacity-5
                   focus:outline-none
-                "
-              >
+                ">
                 <MenuItem v-slot="{ active }">
-                  <a
-                    href="#"
-                    :class="[
-                      active ? 'bg-gray-100' : '',
-                      'block px-4 py-2 text-sm text-gray-700',
-                    ]"
-                    >Your Profile</a
-                  >
+                <a href="#" :class="[
+                  active ? 'bg-gray-100' : '',
+                  'block px-4 py-2 text-sm text-gray-700',
+                ]">Your Profile</a>
                 </MenuItem>
                 <MenuItem v-slot="{ active }">
-                  <a
-                    href="#"
-                    :class="[
-                      active ? 'bg-gray-100' : '',
-                      'block px-4 py-2 text-sm text-gray-700',
-                    ]"
-                    >Settings</a
-                  >
+                <a href="#" :class="[
+                  active ? 'bg-gray-100' : '',
+                  'block px-4 py-2 text-sm text-gray-700',
+                ]">Settings</a>
                 </MenuItem>
                 <MenuItem v-slot="{ active }">
-                  <a
-                    @click.prevent="logout"
-                    href="#"
-                    :class="[
-                      active ? 'bg-gray-100' : '',
-                      'block px-4 py-2 text-sm text-gray-700',
-                    ]"
-                    >Sign out</a
-                  >
+                <a @click.prevent="logout" href="#" :class="[
+                  active ? 'bg-gray-100' : '',
+                  'block px-4 py-2 text-sm text-gray-700',
+                ]">Sign out</a>
                 </MenuItem>
               </MenuItems>
             </transition>
@@ -172,20 +124,12 @@
 
     <DisclosurePanel class="sm:hidden">
       <div class="px-2 pt-2 pb-3 space-y-1">
-        <DisclosureButton
-          v-for="item in navigation"
-          :key="item.name"
-          as="a"
-          :href="item.href"
-          :class="[
-            item.current
-              ? 'bg-gray-900 text-white'
-              : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-            'block px-3 py-2 rounded-md text-base font-medium',
-          ]"
-          :aria-current="item.current ? 'page' : undefined"
-          >{{ item.name }}</DisclosureButton
-        >
+        <DisclosureButton v-for="item in navigation" :key="item.name" as="a" :href="item.href" :class="[
+          item.current
+            ? 'bg-gray-900 text-white'
+            : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+          'block px-3 py-2 rounded-md text-base font-medium',
+        ]" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</DisclosureButton>
       </div>
     </DisclosurePanel>
   </Disclosure>
@@ -205,10 +149,9 @@ import { BellIcon, MenuIcon, XIcon } from "@heroicons/vue/outline";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const auth = getAuth();
-// const navigation = [
-//   // { name: "Events", href: "#", current: true },
-//   // { name: "Admin", href: "#", current: false },
-// ];
+const navigation = [
+  { name: "Events", href: "/events", current: true },
+];
 </script>
 
 <script>

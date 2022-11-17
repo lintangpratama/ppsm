@@ -288,6 +288,9 @@ export default {
     };
   },
   mounted() {
+    if (!localStorage.getItem("ppsm-admin")) {
+      window.location.href = "/login-admin"
+    }
   },
   methods: {
     onFileChange(event) {

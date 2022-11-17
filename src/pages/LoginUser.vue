@@ -187,7 +187,9 @@ export default {
     },
   },
   mounted() {
-    // 
+    if (localStorage.getItem("ppsm-user")) {
+      window.location.href = "/home"
+    }
   },
 };
 </script>

@@ -161,12 +161,9 @@ export default {
     },
   },
   mounted() {
-    onAuthStateChanged(getAuth(), (user) => {
-      if (user) {
-        console.log(user);
-        window.location.href = "/admin";
-      }
-    });
+    if (localStorage.getItem("ppsm-admin")) {
+      window.location.href = "/admin"
+    }
   },
 };
 </script>

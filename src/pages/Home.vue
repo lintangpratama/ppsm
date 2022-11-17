@@ -1,18 +1,15 @@
 <template>
   <Navbar />
-  <HeroSection />
   <EventsGroup :data="events" />
 </template>
 
 <script setup>
 import Navbar from "../components/Navbar.vue";
-import HeroSection from "../components/HeroSection.vue";
 import EventsGroup from "../components/EventsGroup.vue";
 import axios from "axios";
 </script>
 
 <script>
-
 export default {
   data() {
     return {

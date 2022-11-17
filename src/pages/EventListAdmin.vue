@@ -6,7 +6,6 @@
 <script setup>
 import EventsGroupAdmin from "../components/EventGroupAdmin.vue";
 import NavbarAdmin from "../components/NavbarAdmin.vue";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 </script>
 
 <script>
