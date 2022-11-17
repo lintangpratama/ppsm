@@ -8,7 +8,6 @@ const auth = getAuth();
 <template>
   <NavbarAdmin />
   <AdminMenu />
-  <div @click.prevent="create">Create displayName</div>
 </template>
 
 <script>
