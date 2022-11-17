@@ -13,7 +13,7 @@
       <div>
         <img class="mx-auto h-12 w-auto" src="../assets/logo.svg" alt="Workflow" />
         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Regiter your account
+          Register your account
         </h2>
       </div>
       <form class="mt-8 space-y-6" @submit.prevent="login">
@@ -291,7 +291,8 @@ export default {
             "school_address": this.school,
             "address": this.address
           }).then(res => {
-            if (res.meta.status_code == 200) {
+            console.log(res);
+            if (res.data.meta.status_code == 200) {
               this.$swal({
                 icon: 'success',
                 title: 'Pendaftaran Akun Berhasil',

@@ -165,7 +165,7 @@ export default {
             if (res.data.meta.status_code == 200) {
               console.log(res);
               localStorage.setItem("ppsm-user", res.data.data.token)
-              window.location.href = "/"
+              window.location.href = "/home"
             } else {
               this.$swal({
                 icon: 'success',

@@ -2,6 +2,7 @@ import { createWebHistory, createRouter } from "vue-router";
 import Home from "../pages/Home.vue";
 import LoginAdmin from "../pages/LoginAdmin.vue";
 import HomeAdmin from "../pages/HomeAdmin.vue";
+import HomeUser from "../pages/HomeUser.vue";
 import AddEvent from "../pages/AddEvent.vue";
 import EventListAdmin from "../pages/EventListAdmin.vue";
 import AllEvents from "../pages/AllEvents.vue";
@@ -13,7 +14,7 @@ import RegisterUser from "../pages/RegisterUser.vue";
 const routes = [
   {
     path: "/",
-    name: "Home",
+    name: "Root",
     component: Home,
   },
   {
@@ -25,6 +26,11 @@ const routes = [
     path: "/login",
     name: "Login",
     component: Login,
+  },
+  {
+    path: "/home",
+    name: "Home",
+    component: HomeUser,
   },
   {
     path: "/register",
