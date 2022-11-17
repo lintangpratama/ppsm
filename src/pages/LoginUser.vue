@@ -1,6 +1,5 @@
 <template>
-  <div
-    class="
+  <div class="
       min-h-full
       flex
       items-center
@@ -9,15 +8,10 @@
       px-4
       sm:px-6
       lg:px-8
-    "
-  >
+    ">
     <div class="max-w-md w-full space-y-8">
       <div>
-        <img
-          class="mx-auto h-12 w-auto"
-          src="../assets/logo.svg"
-          alt="Workflow"
-        />
+        <img class="mx-auto h-12 w-auto" src="../assets/logo.svg" alt="Workflow" />
         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
           Sign in to your account
         </h2>
@@ -27,13 +21,7 @@
         <div class="rounded-md shadow-sm -space-y-px">
           <div>
             <label for="email-address" class="sr-only">Username</label>
-            <input
-              id="email-address"
-              name="email"
-              v-model="email"
-              type="text"
-              autocomplete="email"
-              required="true"
+            <input id="email-address" name="email" v-model="email" type="text" autocomplete="email" required="true"
               class="
                 appearance-none
                 rounded-none
@@ -51,20 +39,12 @@
                 focus:border-emerald-400
                 focus:z-10
                 sm:text-sm
-              "
-              placeholder="Email"
-            />
+              " placeholder="Email" />
           </div>
           <div>
             <label for="password" class="sr-only">Password</label>
-            <input
-              id="password"
-              name="password"
-              v-model="password"
-              type="password"
-              autocomplete="current-password"
-              required="true"
-              class="
+            <input id="password" name="password" v-model="password" type="password" autocomplete="current-password"
+              required="true" class="
                 appearance-none
                 rounded-none
                 relative
@@ -81,27 +61,20 @@
                 focus:border-emerald-400
                 focus:z-10
                 sm:text-sm
-              "
-              placeholder="Password"
-            />
+              " placeholder="Password" />
           </div>
         </div>
 
         <div class="flex items-center justify-between">
           <div class="flex items-center">
-            <input
-              id="remember-me"
-              name="remember-me"
-              type="checkbox"
-              class="
+            <input id="remember-me" name="remember-me" type="checkbox" class="
                 h-4
                 w-4
                 text-emerald-600
                 focus:ring-emerald-500
                 border-gray-300
                 rounded
-              "
-            />
+              " />
             <label for="remember-me" class="ml-2 block text-sm text-gray-900">
               Remember me
             </label>
@@ -109,10 +82,7 @@
         </div>
 
         <div>
-          <button
-            @click.prevent="login"
-            type="submit"
-            class="
+          <button @click.prevent="login" type="submit" class="
               group
               relative
               w-full
@@ -131,16 +101,38 @@
               focus:ring-2
               focus:ring-offset-2
               focus:ring-emerald-500
-            "
-          >
+            ">
             <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-              <LockClosedIcon
-                class="h-5 w-5 text-emerald-100 group-hover:text-emerald-400"
-                aria-hidden="true"
-              />
+              <LockClosedIcon class="h-5 w-5 text-emerald-100 group-hover:text-emerald-400" aria-hidden="true" />
             </span>
             <a @click.prevent="login"> Sign in </a>
           </button>
+          <div class="
+              group
+              relative
+              w-full
+              flex
+              justify-center
+              py-2
+              px-4
+              mt-2
+              border border-transparent
+              text-sm
+              font-medium
+              rounded-md
+              text-main
+              bg-white
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-emerald-500
+            ">
+            <p class="text-gray-900">Doesn't have an account?
+              <span class="text-main">
+                <a href="/register">Sign Up</a>
+              </span>
+            </p>
+          </div>
         </div>
       </form>
     </div>
@@ -149,19 +141,49 @@
 
 <script setup>
 import { LockClosedIcon } from "@heroicons/vue/solid";
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-} from "firebase/auth";
+import axios from "axios";
 </script>
 
 <script>
 export default {
   methods: {
     login() {
-      alert("Haha");
-      window.location.href = "/"
+      if (!this.email || !this.password) {
+        this.$swal({
+          icon: 'error',
+          title: 'Harap Isi Semua Data Terlebih Dahulu',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      } else {
+
+        axios.post("https://api.ppsm.or.id/api/auth/login?user=user",
+          {
+            "email": this.email,
+            "password": "ivanrizkySaputra98r4+",
+          }).then(res => {
+            if (res.data.meta.status_code == 200) {
+              console.log(res);
+              localStorage.setItem("ppsm-user", res.data.data.token)
+              window.location.href = "/"
+            } else {
+              this.$swal({
+                icon: 'success',
+                title: res.meta.message,
+                showConfirmButton: false,
+                timer: 1500
+              });
+            }
+          }).catch(e => {
+            console.log(e);
+            this.$swal({
+              icon: 'error',
+              title: e.response.data.meta.message,
+              showConfirmButton: false,
+              timer: 1500
+            });
+          })
+      }
     },
   },
   mounted() {

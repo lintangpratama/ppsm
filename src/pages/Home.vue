@@ -10,12 +10,11 @@ import Navbar from "../components/Navbar.vue";
 import HeroSection from "../components/HeroSection.vue";
 import Category from "../components/Category.vue";
 import EventsGroup from "../components/EventsGroup.vue";
+import axios from "axios";
 </script>
 
 <script>
-import DataService from "../utils/firestoreDb";
 
-const service = new DataService();
 export default {
   data() {
     return {
@@ -23,13 +22,11 @@ export default {
     };
   },
   mounted() {
-    service
-      .getSomeData(4)
-      .then((value) => {
-        console.log(value);
-        this.events = value;
-        })
-      .catch((e) => console.log(e));
+    axios.get("https://api.ppsm.or.id/api/events", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("ppsm-user")}`
+      }
+    }).then(res => this.events = res.data.data)
   },
-};
+}
 </script>

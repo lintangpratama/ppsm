@@ -115,19 +115,49 @@
 
 <script setup>
 import { LockClosedIcon } from "@heroicons/vue/solid";
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-} from "firebase/auth";
+import axios from "axios";
 </script>
 
 <script>
 export default {
   methods: {
     login() {
-      alert("Haha");
-      window.location.href = "/admin"
+      if (!this.email || !this.password) {
+        this.$swal({
+          icon: 'error',
+          title: 'Harap Isi Semua Data Terlebih Dahulu',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      } else {
+        axios.post("https://api.ppsm.or.id/api/auth/login?user=admin",
+          {
+            "username": this.email,
+            "password": this.password,
+          }).then(res => {
+            console.log(res);
+            if (res.data.meta.status_code == 200) {
+              console.log(res);
+              localStorage.setItem("ppsm-admin", res.data.data.token)
+              window.location.href = "/admin"
+            } else {
+              this.$swal({
+                icon: 'success',
+                title: res.meta.message,
+                showConfirmButton: false,
+                timer: 1500
+              });
+            }
+          }).catch(e => {
+            console.log(e);
+            this.$swal({
+              icon: 'error',
+              title: e.response.data.meta.message,
+              showConfirmButton: false,
+              timer: 1500
+            });
+          })
+      }
     },
   },
   mounted() {

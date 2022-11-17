@@ -13,7 +13,7 @@
       <div>
         <img class="mx-auto h-12 w-auto" src="../assets/logo.svg" alt="Workflow" />
         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Regiter your accunt
+          Regiter your account
         </h2>
       </div>
       <form class="mt-8 space-y-6" @submit.prevent="login">
@@ -83,7 +83,7 @@
           </div>
           <div>
             <label for="school" class="sr-only">Asal Sekolah</label>
-            <input id="school" name="school" v-model="school" type="text" required="true" class="
+            <input id="school" name="school" v-model="school" type="text" class="
                 appearance-none
                 rounded-none
                 relative
@@ -122,8 +122,48 @@
               " placeholder="Email" />
           </div>
           <div>
+            <label for="email" class="sr-only">Username</label>
+            <input id="username" name="username" v-model="username" type="text" required="true" class="
+                appearance-none
+                rounded-none
+                relative
+                block
+                w-full
+                px-3
+                py-2
+                border border-gray-300
+                placeholder-gray-500
+                text-gray-900
+                focus:outline-none
+                focus:ring-emerald-400
+                focus:border-emerald-400
+                focus:z-10
+                sm:text-sm
+              " placeholder="Username" />
+          </div>
+          <div>
+            <label for="email" class="sr-only">Password</label>
+            <input id="password" name="password" v-model="password" type="password" required="true" class="
+                appearance-none
+                rounded-none
+                relative
+                block
+                w-full
+                px-3
+                py-2
+                border border-gray-300
+                placeholder-gray-500
+                text-gray-900
+                focus:outline-none
+                focus:ring-emerald-400
+                focus:border-emerald-400
+                focus:z-10
+                sm:text-sm
+              " placeholder="Password" />
+          </div>
+          <div>
             <label for="parents-name" class="sr-only">Nama Orang Tua</label>
-            <input id="parents-name" name="parents-name" v-model="parentsText" type="text" autocomplete="name"
+            <input id="parents-name" name="parents-name" v-model="parentsName" type="text" autocomplete="name"
               required="true" class="
                 appearance-none
                 rounded-none
@@ -166,7 +206,7 @@
           </div>
         </div>
         <div>
-          <button @click.prevent="login" type="submit" class="
+          <button @click.prevent="register" type="submit" class="
               group
               relative
               w-full
@@ -189,8 +229,34 @@
             <span class="absolute left-0 inset-y-0 flex items-center pl-3">
               <LockClosedIcon class="h-5 w-5 text-emerald-100 group-hover:text-emerald-400" aria-hidden="true" />
             </span>
-            <a @click.prevent="login">Daftar</a>
+            <a>Daftar</a>
           </button>
+          <div class="
+              group
+              relative
+              w-full
+              flex
+              justify-center
+              py-2
+              px-4
+              mt-2
+              border border-transparent
+              text-sm
+              font-medium
+              rounded-md
+              text-main
+              bg-white
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-emerald-500
+            ">
+            <p class="text-gray-900">Sudah punya akun?
+              <span class="text-main">
+                <a href="/login">Masuk</a>
+              </span>
+            </p>
+          </div>
         </div>
       </form>
     </div>
@@ -198,18 +264,62 @@
 </template>
 
 <script setup>
+import axios from "axios";
 </script>
 
 <script>
 export default {
   methods: {
-    login() {
-      alert("Haha");
-      window.location.href = "/login"
+    register() {
+      if (!this.name || !this.username || !this.parentsName || !this.email || !this.password || !this.phone || !this.parentsPhone || !this.school || !this.address) {
+        this.$swal({
+          icon: 'error',
+          title: 'Harap Isi Semua Data Terlebih Dahulu',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      } else {
+        axios.post("https://api.ppsm.or.id/api/auth/register?user=user",
+          {
+            "name": this.name,
+            "username": this.username,
+            "parent_name": this.parentsName,
+            "email": this.email,
+            "password": "ivanrizkySaputra98r4+",
+            "phone_number": this.phone.toString(),
+            "parent_phone_number": this.parentsPhone.toString(),
+            "school_address": this.school,
+            "address": this.address
+          }).then(res => {
+            if (res.meta.status_code == 200) {
+              this.$swal({
+                icon: 'success',
+                title: 'Pendaftaran Akun Berhasil',
+                showConfirmButton: false,
+                timer: 1500
+              });
+              window.location.href = "/login"
+            } else {
+              this.$swal({
+                icon: 'success',
+                title: res.meta.message,
+                showConfirmButton: false,
+                timer: 1500
+              });
+            }
+          }).catch(e => {
+            this.$swal({
+              icon: 'error',
+              title: e.response.data.meta.message,
+              showConfirmButton: false,
+              timer: 1500
+            });
+          })
+      }
     },
   },
   mounted() {
-    alert("Haha");
+    console.log("Haha");
   },
 };
 </script>

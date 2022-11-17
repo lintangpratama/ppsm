@@ -1,6 +1,5 @@
 <template>
-  <div
-    class="
+  <div class="
       text-left
       mt-10
       mb-10
@@ -11,11 +10,8 @@
       md:mt-16
       lg:mt-20 lg:px-8
       xl:mt-14
-    "
-  >
-    <h1
-      class="text-center text-3xl font-semibold mb-4 sm:mb-6 md:mb-8 lg:mb-10"
-    >
+    ">
+    <h1 class="text-center text-3xl font-semibold mb-4 sm:mb-6 md:mb-8 lg:mb-10">
       Add <span class="text-main">Event</span>
     </h1>
     <div>
@@ -37,19 +33,11 @@
               <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                 <div class="grid grid-cols-6 gap-6">
                   <div class="col-span-6 sm:col-span-4">
-                    <label
-                      for="company-website"
-                      class="block text-sm font-medium text-gray-700"
-                    >
+                    <label for="company-website" class="block text-sm font-medium text-gray-700">
                       Title
                     </label>
                     <div class="mt-1 flex rounded-md shadow-sm">
-                      <input
-                        type="text"
-                        name="company-website"
-                        id="company-website"
-                        v-model="title"
-                        class="
+                      <input type="text" name="company-website" id="company-website" v-model="title" class="
                           focus:ring-emerald-300 focus:border-emerald-300
                           flex-1
                           block
@@ -57,26 +45,16 @@
                           rounded-md
                           sm:text-sm
                           border-gray-300
-                        "
-                        placeholder="Ex: Pelatihan Dasar Adobe Premiere Pro"
-                      />
+                        " placeholder="Ex: Pelatihan Dasar Adobe Premiere Pro" />
                     </div>
                   </div>
 
                   <div class="col-span-6 sm:col-span-6">
-                    <label
-                      for="about"
-                      class="block text-sm font-medium text-gray-700"
-                    >
+                    <label for="about" class="block text-sm font-medium text-gray-700">
                       About
                     </label>
                     <div class="mt-1">
-                      <textarea
-                        id="about"
-                        name="about"
-                        rows="3"
-                        v-model="about"
-                        class="
+                      <textarea id="about" name="about" rows="3" v-model="about" class="
                           shadow-sm
                           focus:ring-emerald-300 focus:border-emerald-300
                           mt-1
@@ -85,9 +63,7 @@
                           sm:text-sm
                           border border-gray-300
                           rounded-md
-                        "
-                        placeholder="you@example.com"
-                      />
+                        " placeholder="you@example.com" />
                     </div>
                     <p class="mt-2 text-sm text-gray-500">
                       Brief description for your organization event. Such as
@@ -96,19 +72,10 @@
                     </p>
                   </div>
 
-                  <div class="col-span-4">
-                    <label
-                      for="first-name"
-                      class="block text-sm font-medium text-gray-700"
-                      >Date</label
-                    >
-                    <input
-                      type="date"
-                      name="first-name"
-                      id="first-name"
-                      v-model="date"
-                      autocomplete="given-name"
-                      class="
+                  <div class="col-span-3">
+                    <label for="first-name" class="block text-sm font-medium text-gray-700">Start time</label>
+                    <input type="datetime-local" name="first-name" id="first-name" v-model="start_time"
+                      autocomplete="given-name" class="
                         mt-1
                         focus:ring-emerald-300 focus:border-emerald-300
                         block
@@ -117,23 +84,13 @@
                         sm:text-sm
                         border-gray-300
                         rounded-md
-                      "
-                    />
+                      " />
                   </div>
 
                   <div class="col-span-3">
-                    <label
-                      for="first-name"
-                      class="block text-sm font-medium text-gray-700"
-                      >Start time</label
-                    >
-                    <input
-                      type="time"
-                      name="first-name"
-                      id="first-name"
-                      v-model="start_time"
-                      autocomplete="given-name"
-                      class="
+                    <label for="last-name" class="block text-sm font-medium text-gray-700">End time</label>
+                    <input type="datetime-local" name="last-name" v-model="end_time" id="last-name"
+                      autocomplete="family-name" class="
                         mt-1
                         focus:ring-emerald-300 focus:border-emerald-300
                         block
@@ -142,33 +99,7 @@
                         sm:text-sm
                         border-gray-300
                         rounded-md
-                      "
-                    />
-                  </div>
-
-                  <div class="col-span-3">
-                    <label
-                      for="last-name"
-                      class="block text-sm font-medium text-gray-700"
-                      >End time</label
-                    >
-                    <input
-                      type="time"
-                      name="last-name"
-                      v-model="end_time"
-                      id="last-name"
-                      autocomplete="family-name"
-                      class="
-                        mt-1
-                        focus:ring-emerald-300 focus:border-emerald-300
-                        block
-                        w-full
-                        shadow-sm
-                        sm:text-sm
-                        border-gray-300
-                        rounded-md
-                      "
-                    />
+                      " />
                   </div>
                 </div>
 
@@ -176,8 +107,7 @@
                   <label class="block text-sm font-medium text-gray-700">
                     Poster photo
                   </label>
-                  <div
-                    class="
+                  <div class="
                       mt-1
                       flex
                       justify-center
@@ -186,27 +116,16 @@
                       pb-6
                       border-2 border-gray-300 border-dashed
                       rounded-md
-                    "
-                  >
+                    ">
                     <div v-if="!this.file" class="space-y-1 text-center">
-                      <svg
-                        class="mx-auto h-12 w-12 text-gray-400"
-                        stroke="currentColor"
-                        fill="none"
-                        viewBox="0 0 48 48"
-                        aria-hidden="true"
-                      >
+                      <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48"
+                        aria-hidden="true">
                         <path
                           d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                       </svg>
                       <div class="flex text-sm text-gray-600 justify-center">
-                        <label
-                          for="file-upload"
-                          class="
+                        <label for="file-upload" class="
                             relative
                             cursor-pointer
                             bg-white
@@ -218,18 +137,10 @@
                             focus-within:ring-2
                             focus-within:ring-offset-2
                             focus-within:ring-emerald-300
-                          "
-                        >
+                          ">
                           <span>Upload an image</span>
-                          <input
-                            id="file-upload"
-                            name="file-upload"
-                            type="file"
-                            ref="poster"
-                            @change="onFileChange"
-                            accept="image/*"
-                            class="sr-only"
-                          />
+                          <input id="file-upload" name="file-upload" type="file" ref="poster" @change="onFileChange"
+                            accept="image/*" class="sr-only" />
                         </label>
                       </div>
                       <p class="text-xs text-gray-500">
@@ -237,34 +148,22 @@
                       </p>
                     </div>
                     <div v-else class="space-y-1 text-center">
-                      <svg
-                        version="1.1"
-                        id="Capa_1"
-                        xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                        x="0px"
-                        y="0px"
-                        viewBox="0 0 50 50"
-                        style="
+                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50" style="
                           enable-background: new 0 0 50 50;
                           width: 60px;
                           margin: 0px auto;
-                        "
-                        xml:space="preserve"
-                      >
+                        " xml:space="preserve">
                         <circle style="fill: #25ae88" cx="25" cy="25" r="25" />
-                        <polyline
-                          style="
+                        <polyline style="
                             fill: none;
                             stroke: #ffffff;
                             stroke-width: 2;
                             stroke-linecap: round;
                             stroke-linejoin: round;
                             stroke-miterlimit: 10;
-                          "
-                          points="
-	38,15 22,33 12,25 "
-                        />
+                          " points="
+	38,15 22,33 12,25 " />
                       </svg>
                       <div class="flex text-sm text-gray-600 justify-center">
                         Image <span class="text-main ml-0.5">chosen</span>
@@ -275,60 +174,81 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-span-6 sm:col-span-4">
-                  <label
-                    for="email-address"
-                    class="block text-sm font-medium text-gray-700"
-                    >Location</label
-                  >
-                  <input
-                    type="text"
-                    name="email-address"
-                    v-model="location"
-                    id="email-address"
-                    placeholder="Ex: Online via Zoom or Offline address"
-                    class="
+
+                <div>
+                  <label class="block text-sm font-medium text-gray-700">
+                    Certificate Template
+                  </label>
+                  <div class="
                       mt-1
-                      focus:ring-emerald-300 focus:border-emerald-300
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
+                      flex
+                      justify-center
+                      px-6
+                      pt-5
+                      pb-6
+                      border-2 border-gray-300 border-dashed
                       rounded-md
-                    "
-                  />
-                </div>
-                <div class="col-span-6 sm:col-span-4">
-                  <label
-                    for="email-address"
-                    class="block text-sm font-medium text-gray-700"
-                    >Registration Link</label
-                  >
-                  <input
-                    type="text"
-                    name="email-address"
-                    v-model="link"
-                    id="email-address"
-                    placeholder="Ex: bit.ly/PelatihanEditingTIUINWS2022"
-                    class="
-                      mt-1
-                      focus:ring-emerald-300 focus:border-emerald-300
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                    "
-                  />
+                    ">
+                    <div v-if="!this.certificateFile" class="space-y-1 text-center">
+                      <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48"
+                        aria-hidden="true">
+                        <path
+                          d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                      <div class="flex text-sm text-gray-600 justify-center">
+                        <label for="file-upload" class="
+                            relative
+                            cursor-pointer
+                            bg-white
+                            rounded-md
+                            font-medium
+                            text-main
+                            hover:text-emerald-300
+                            focus-within:outline-none
+                            focus-within:ring-2
+                            focus-within:ring-offset-2
+                            focus-within:ring-emerald-300
+                          ">
+                          <span>Upload an image</span>
+                          <input id="file-upload" name="file-upload" type="file" ref="poster"
+                            @change="onFileCertificateChange" accept="image/*" class="sr-only" />
+                        </label>
+                      </div>
+                      <p class="text-xs text-gray-500">
+                        PNG, JPG, JPEG up to 10MB
+                      </p>
+                    </div>
+                    <div v-else class="space-y-1 text-center">
+                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50" style="
+                          enable-background: new 0 0 50 50;
+                          width: 60px;
+                          margin: 0px auto;
+                        " xml:space="preserve">
+                        <circle style="fill: #25ae88" cx="25" cy="25" r="25" />
+                        <polyline style="
+                            fill: none;
+                            stroke: #ffffff;
+                            stroke-width: 2;
+                            stroke-linecap: round;
+                            stroke-linejoin: round;
+                            stroke-miterlimit: 10;
+                          " points="
+	38,15 22,33 12,25 " />
+                      </svg>
+                      <div class="flex text-sm text-gray-600 justify-center">
+                        Image <span class="text-main ml-0.5">chosen</span>
+                      </div>
+                      <p class="text-xs text-gray-500">
+                        File name: {{ certificateFile.name }}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                <button
-                  type="submit"
-                  @click.prevent="add"
-                  class="
+                <button type="submit" @click.prevent="add" class="
                     inline-flex
                     justify-center
                     py-2
@@ -345,8 +265,7 @@
                     focus:ring-2
                     focus:ring-offset-2
                     focus:ring-emerald-300
-                  "
-                >
+                  ">
                   Save
                 </button>
               </div>
@@ -359,24 +278,13 @@
 </template>
 
 <script>
-import { initializeApp } from "firebase/app";
-import { getAuth, onAuthStateChanged } from "@firebase/auth";
-import { getStorage, ref, uploadBytes } from "firebase/storage";
-import DataService from "../utils/firestoreDb";
-import firebaseConfig from "../../firebaseConfig";
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
-// Initialize firebase storage
-const storage = getStorage();
-const randomString = (Math.random() + 1).toString(36).substring(7);
-const storageRef = ref(storage, randomString);
+import axios from 'axios';
 
 export default {
   data() {
     return {
       file: null,
+      certificateFile: null,
     };
   },
   mounted() {
@@ -386,57 +294,58 @@ export default {
       this.file = event.target.files[0];
       console.log(this.file);
     },
+    onFileCertificateChange(event) {
+      this.certificateFile = event.target.files[0];
+      console.log(this.certificateFile);
+    },
     add() {
-      onAuthStateChanged(getAuth(), (user) => {
-        const service = new DataService();
-        const username = user.displayName;
-        const image = `https://firebasestorage.googleapis.com/v0/b/scievents-9ed9f.appspot.com/o/${randomString}?alt=media`;
-        const data = {
-          organizer: username,
-          title: this.title,
-          about: this.about,
-          date: this.date,
-          end_time: this.end_time,
-          start_time: this.start_time,
-          link: this.link,
-          location: this.location,
-          imageUrl: image,
-        };
-        const {
-          organizer,
-          title,
-          about,
-          date,
-          end_time,
-          start_time,
-          link,
-          location,
-          imageUrl,
-        } = data;
-        if (
-          title &&
-          about &&
-          date &&
-          end_time &&
-          start_time &&
-          link &&
-          location &&
-          imageUrl &&
-          organizer
-        ) {
-          console.log(data);
-          uploadBytes(storageRef, this.file)
-            .then((snapshot) => {
-              service
-                .create(data)
-                .then(() => (window.location.href = "/admin"))
-                .catch((e) => console.log(e));
-            })
-            .catch((e) => console.log(e));
-        } else {
-          alert("Oopss! Please input all event data");
-        }
-      });
+      if (!this.title || !this.about || !this.file || !this.certificateFile || !this.start_time || !this.end_time) {
+        this.$swal({
+          icon: 'error',
+          title: 'Harap Isi Semua Data Terlebih Dahulu',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      } else {
+        let formData = new FormData()
+        formData.append("title", this.title)
+        formData.append("description", this.about)
+        formData.append("start_at", new Date(this.start_time).toISOString())
+        formData.append("end_at", new Date(this.end_time).toISOString())
+        formData.append("banner", this.file)
+        formData.append("certificate", this.certificateFile)
+        console.log(formData);
+        axios.post("https://api.ppsm.or.id/api/events",
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("ppsm-admin")}`
+            }
+          }
+        ).then(res => {
+          console.log(res);
+          if (res.data.meta.status_code == 200) {
+            console.log(res);
+            localStorage.setItem("ppsm-admin", res.data.data.token)
+            window.location.href = "/admin"
+          } else {
+            this.$swal({
+              icon: 'success',
+              title: res.meta.message,
+              showConfirmButton: false,
+              timer: 1500
+            });
+          }
+        }).catch(e => {
+          console.log(e);
+          this.$swal({
+            icon: 'error',
+            title: e.response.data.meta.message,
+            showConfirmButton: false,
+            timer: 1500
+          });
+        })
+      }
     },
   },
 };
