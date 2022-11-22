@@ -1,14 +1,14 @@
 <template>
   <NavbarUser />
-  <EventsGroup title="Upcoming" :data="events" />
+  <EventsGroup title="My" :data="events" page="order" />
 </template>
-
+  
 <script setup>
 import NavbarUser from "../components/NavbarUser.vue";
 import EventsGroup from "../components/EventsGroup.vue";
 import axios from "axios";
 </script>
-
+  
 <script>
 export default {
   data() {

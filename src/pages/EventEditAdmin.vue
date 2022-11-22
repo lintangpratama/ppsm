@@ -12,7 +12,7 @@
       xl:mt-14
     ">
     <h1 class="text-center text-3xl font-semibold mb-4 sm:mb-6 md:mb-8 lg:mb-10">
-      Add <span class="text-main">Event</span>
+      Edit <span class="text-main">Event</span>
     </h1>
     <div>
       <div class="md:grid md:grid-cols-3 md:gap-6">

@@ -24,7 +24,7 @@
               group-hover:opacity-75
               lg:h-80 lg:aspect-none
             ">
-            <img :src="product.imageUrl" alt="events" class="
+            <img :src="product.banner" alt="events" class="
                 w-full
                 h-full
                 object-center object-contain
@@ -39,7 +39,8 @@
                   {{ product.title }}
                 </router-link>
               </h3>
-              <p class="mt-1 text-sm text-gray-500">{{ product.organizer }}</p>
+              <p class="mt-1 text-sm text-gray-500">{{ product.type === "paid" ? toRupiahFormat(product.price) : "Gratis" }}</p>
+              <p class="mt-1 text-sm text-gray-500">{{ convertTime(product.end_at) }}</p>
             </div>
           </div>
         </div>
@@ -52,11 +53,12 @@
 
 <script setup>
 import NavbarUser from "../components/NavbarUser.vue";
+import axios from "axios";
+import convertTime from "../utils/convertTime"
+import toRupiahFormat from "../utils/toRupiahFormat"
 </script>
 
 <script>
-import DataService from "../utils/firestoreDb";
-
 export default {
   data() {
     return {
@@ -67,17 +69,14 @@ export default {
     if (!localStorage.getItem("ppsm-user")) {
       window.location.href = "/login"
     }
-    const service = new DataService();
-    if (this.$route.query.organizer) {
-      const data = await service.getDataByOrganizer(
-        this.$route.query.organizer
-      );
-      this.events = data;
-    } else {
-      const data = await service.getAll();
-      this.events = data;
-      console.log(data);
-    }
+    axios.get("https://api.ppsm.or.id/api/events", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("ppsm-user")}`
+      }
+    }).then(res => {
+      this.events = res.data.data
+      console.log(this.events);
+    })
   },
 };
 </script>

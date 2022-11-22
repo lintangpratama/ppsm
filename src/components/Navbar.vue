@@ -128,8 +128,4 @@ import {
   MenuItems,
 } from "@headlessui/vue";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/vue/outline";
-
-const navigation = [
-  { name: "Events", href: "/events", current: false }
-];
 </script>

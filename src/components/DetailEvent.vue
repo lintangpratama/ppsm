@@ -14,7 +14,7 @@
             mx-auto
             md:mt-2 md:text-base
           ">
-          Organize by {{ organizer }}
+          {{ type === "paid" ? toRupiahFormat(price) : "Gratis" }}
         </p>
         <img :src="imageUrl" class="mx-auto" width="350" alt="event image" />
       </div>
@@ -51,7 +51,7 @@
           </dd>
         </div>
         <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-          <a target="_blank" :href="link">
+          <router-link :to="'/register-event/' + id">
             <button type="submit" class="
                 inline-flex
                 justify-center
@@ -72,7 +72,7 @@
               ">
               Register Event
             </button>
-          </a>
+          </router-link>
         </div>
       </dl>
     </div>
@@ -82,11 +82,13 @@
 <script setup>
 import { PaperClipIcon } from "@heroicons/vue/solid";
 import convertDate from "../utils/convertTime";
+import toRupiahFormat from "../utils/toRupiahFormat";
 </script>
 
 <script>
 export default {
   props: [
+    'id',
     'title',
     'about',
     'date',
@@ -95,7 +97,9 @@ export default {
     'location',
     'link',
     'imageUrl',
-    'organizer'
+    'organizer',
+    'type',
+    'price'
   ],
 }
 </script>

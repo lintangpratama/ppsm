@@ -6,10 +6,10 @@
 <script setup>
 import EventsGroupAdmin from "../components/EventGroupAdmin.vue";
 import NavbarAdmin from "../components/NavbarAdmin.vue";
+import axios from "axios";
 </script>
 
 <script>
-import DataService from "../utils/firestoreDb";
 
 export default {
   data() {
@@ -18,14 +18,20 @@ export default {
     };
   },
   methods: {
-    async getData(organizer) {
-      const service = new DataService();
-      const data = await service.getDataByOrganizer(organizer);
-      this.events = data;
-      console.log(data);
-    },
+    
   },
   async mounted() {
+    if (!localStorage.getItem("ppsm-admin")) {
+      window.location.href = "/login-admin"
+    }
+    axios.get("https://api.ppsm.or.id/api/events", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("ppsm-user")}`
+      }
+    }).then(res => {
+      this.events = res.data.data
+      console.log(this.events);
+    })
   },
 };
 </script>

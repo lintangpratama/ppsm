@@ -150,7 +150,8 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const auth = getAuth();
 const navigation = [
-  { name: "Events", href: "/events", current: true },
+  { name: "Event", href: "/events", current: false },
+  { name: "Pesanan", href: "/order", current: false },
 ];
 </script>
 

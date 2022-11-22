@@ -1,6 +1,6 @@
 <template>
   <Navbar />
-  <EventsGroup :data="events" />
+  <EventsGroup title="Upcoming" :data="events" />
 </template>
 
 <script setup>

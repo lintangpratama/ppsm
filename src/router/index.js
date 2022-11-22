@@ -8,8 +8,12 @@ import EventListAdmin from "../pages/EventListAdmin.vue";
 import AllEvents from "../pages/AllEvents.vue";
 import DetailEvent from "../pages/Details.vue";
 import EventDetailAdmin from "../pages/EventDetailAdmin.vue";
+import EventEditAdmin from "../pages/EventEditAdmin.vue";
 import Login from "../pages/LoginUser.vue";
 import RegisterUser from "../pages/RegisterUser.vue";
+import RegisterEvent from "../pages/RegisterEvent.vue";
+import OrderListUser from "../pages/OrderListUser.vue";
+import OrderDetailUser from "../pages/OrderDetailUser.vue";
 
 const routes = [
   {
@@ -43,9 +47,24 @@ const routes = [
     component: AllEvents,
   },
   {
+    path: "/order",
+    name: "Order",
+    component: OrderListUser,
+  },
+  {
+    path: "/order/:orderId",
+    name: "DetailOrder",
+    component: OrderDetailUser,
+  },
+  {
     path: "/events/:eventId",
     name: "DetailEvent",
     component: DetailEvent,
+  },
+  {
+    path: "/register-event/:eventId",
+    name: "RegisterEvent",
+    component: RegisterEvent,
   },
   {
     path: "/admin/add-event",
@@ -66,6 +85,11 @@ const routes = [
     path: "/admin/event-list/:eventId",
     name: "EventDetailAdmin",
     component: EventDetailAdmin,
+  },
+  {
+    path: "/admin/edit-event/:eventId",
+    name: "EventEditAdmin",
+    component: EventEditAdmin,
   },
 ];
 

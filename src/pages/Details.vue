@@ -1,14 +1,24 @@
 <template>
-  <Navbar />
+  <div v-if="user === 'user'">
+    <NavbarUser />
+  </div>
+  <div v-else-if="user === 'admin'">
+    <NavbarAdmin />
+  </div>
+  <div v-else>
+    <Navbar />
+  </div>
   <div class="max-w-2xl mx-auto py-6 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
-    <DetailEvent :title="event.title" :about="event.description" :end_time="event.end_at"
-      :start_time="event.start_at" :imageUrl="event.banner" :link="event.link" :location="event.location"
-      :organizer="event.organizer" />
+    <DetailEvent :id="this.$route.params.eventId" :title="event.title" :about="event.description"
+      :end_time="event.end_at" :start_time="event.start_at" :imageUrl="event.banner" :link="event.link"
+      :location="event.location" :type="event.type" :price="event.price" />
   </div>
 </template>
 
 <script setup>
 import Navbar from "../components/Navbar.vue";
+import NavbarUser from "../components/NavbarUser.vue";
+import NavbarAdmin from "../components/NavbarAdmin.vue";
 import DetailEvent from "../components/DetailEvent.vue";
 </script>
 
@@ -18,6 +28,7 @@ import axios from "axios";
 export default {
   data() {
     return {
+      user: localStorage.getItem("ppsm-user") ? "user" : localStorage.getItem("ppsm-admin") ? "admin" : "guest",
       event: {}
     };
   },
