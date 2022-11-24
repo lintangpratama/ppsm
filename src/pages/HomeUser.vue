@@ -1,6 +1,6 @@
 <template>
   <NavbarUser />
-  <EventsGroup title="Upcoming" :data="events" />
+  <EventsGroup title="Upcoming" :data="events" emptyMsg="Tidak ada event"  />
 </template>
 
 <script setup>

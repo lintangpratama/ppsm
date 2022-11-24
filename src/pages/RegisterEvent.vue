@@ -17,33 +17,25 @@
         <div>
             <div class="md:grid md:grid-cols-3 md:gap-6">
                 <div class="md:col-span-1">
-                    <div class="px-4 sm:px-0">
+                    <div v-if="event.type === 'paid'" class="px-4 sm:px-0">
                         <h3 class="text-lg font-medium leading-6 text-gray-900 mb-7">
                             Detail Pesanan
                         </h3>
-                        <div class="flex justify-between mt-2">
-                            <p class="text-sm text-gray-600 self-center">
-                                Order ID
-                            </p>
-                            <p
-                                class="text-sm w-36 text-right text-gray-600 border border-gray-300 rounded-md px-3 py-2">
-                                1234567
-                            </p>
-                        </div>
+
                         <div class="flex justify-between mt-2">
                             <p class="text-sm text-gray-600 self-center">
                                 Total
                             </p>
                             <p
                                 class="text-sm w-36 text-right text-gray-600 border border-gray-300 rounded-md px-3 py-2">
-                                {{ toRupiah(total) }}
+                                {{ toRupiah(event.price) }}
                             </p>
                         </div>
                         <p class="mt-1 text-sm text-gray-600">
 
                         </p>
                     </div>
-                    <div class="px-4 sm:px-0 mt-12">
+                    <div v-if="event.type === 'paid'" class="px-4 sm:px-0 mt-12">
                         <h3 class="text-lg font-medium leading-6 text-gray-900 mb-7">
                             Data Peserta
                         </h3>
@@ -53,7 +45,7 @@
                             </p>
                             <p
                                 class="text-sm w-48 text-right text-gray-600 border border-gray-300 rounded-md px-3 py-2">
-                                Lintang Aji
+                                {{ this.profile.name }}
                             </p>
                         </div>
                         <div class="flex justify-between mt-2">
@@ -62,7 +54,7 @@
                             </p>
                             <p
                                 class="text-sm text-right overflow-auto text-gray-600 border border-gray-300 rounded-md px-3 py-2">
-                                lintangajiyogapratama@gmail.com
+                                {{ this.profile.email }}
                             </p>
                         </div>
                         <div class="flex justify-between mt-2">
@@ -71,7 +63,7 @@
                             </p>
                             <p
                                 class="text-sm w-36 text-right text-gray-600 border border-gray-300 rounded-md px-3 py-2">
-                                0857464756373
+                                {{ this.profile.phone_number }}
                             </p>
                         </div>
                         <div class="flex justify-between mt-2">
@@ -79,44 +71,46 @@
                                 Alamat Sekolah
                             </p>
                             <p class="text-sm text-right text-gray-600 border border-gray-300 rounded-md px-3 py-2">
-                                SMAN 1 Kabupaten Tangerang
+                                {{ this.profile.school_name }}
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="mt-5 md:mt-0 md:col-span-2">
+                <div v-if="event.type === 'paid'" class="mt-5 md:mt-0 md:col-span-2">
                     <form action="#" method="POST">
                         <div class="shadow sm:rounded-md sm:overflow-hidden">
                             <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
-                                <h3 class="text-lg font-medium leading-6 text-gray-900 mb-7">
-                                    Rekening Pembayaran
-                                </h3>
-                                <div class="flex justify-between mt-1" style="margin: 8px !important;">
-                                    <p class="text-sm text-gray-600 self-center">
-                                        Nama Bank
-                                    </p>
-                                    <p
-                                        class="text-sm w-48 text-right text-gray-600 border border-gray-300 rounded-md px-3 py-2">
-                                        BCA
-                                    </p>
-                                </div>
-                                <div class="flex justify-between mt-1" style="margin: 8px !important;">
-                                    <p class="text-sm text-gray-600 self-center">
-                                        Nama Pemilik Rekening
-                                    </p>
-                                    <p
-                                        class="text-sm w-48 text-right text-gray-600 border border-gray-300 rounded-md px-3 py-2">
-                                        Ibnu
-                                    </p>
-                                </div>
-                                <div class="flex justify-between mt-1" style="margin: 8px !important;">
-                                    <p class="text-sm text-gray-600 self-center">
-                                        Nomor Rekening
-                                    </p>
-                                    <p
-                                        class="text-sm w-48 text-right text-gray-600 border border-gray-300 rounded-md px-3 py-2">
-                                        222331315533
-                                    </p>
+                                <div>
+                                    <h3 class="text-lg font-medium leading-6 text-gray-900 mb-7">
+                                        Rekening Pembayaran
+                                    </h3>
+                                    <div class="flex justify-between mt-1" style="margin: 8px !important;">
+                                        <p class="text-sm text-gray-600 self-center">
+                                            Nama Bank
+                                        </p>
+                                        <p
+                                            class="text-sm w-48 text-right text-gray-600 border border-gray-300 rounded-md px-3 py-2">
+                                            BCA
+                                        </p>
+                                    </div>
+                                    <div class="flex justify-between mt-1" style="margin: 8px !important;">
+                                        <p class="text-sm text-gray-600 self-center">
+                                            Nama Pemilik Rekening
+                                        </p>
+                                        <p
+                                            class="text-sm w-48 text-right text-gray-600 border border-gray-300 rounded-md px-3 py-2">
+                                            Ibnu
+                                        </p>
+                                    </div>
+                                    <div class="flex justify-between mt-1" style="margin: 8px !important;">
+                                        <p class="text-sm text-gray-600 self-center">
+                                            Nomor Rekening
+                                        </p>
+                                        <p
+                                            class="text-sm w-48 text-right text-gray-600 border border-gray-300 rounded-md px-3 py-2">
+                                            222331315533
+                                        </p>
+                                    </div>
                                 </div>
                                 <div>
                                     <h3 class="text-lg font-medium leading-6 text-gray-900 mb-7 mt-10">
@@ -222,6 +216,75 @@
                         </div>
                     </form>
                 </div>
+                <div v-else class="flex flex-col w-full justify-end">
+                    <div class="px-4 sm:px-0 mt-12">
+                        <h3 class="text-lg font-medium leading-6 text-gray-900 mb-7">
+                            Data Peserta
+                        </h3>
+                        <div class="flex justify-between mt-2">
+                            <p class="text-sm text-gray-600 self-center">
+                                Nama Peserta
+                            </p>
+                            <p
+                                class="text-sm w-48 text-right text-gray-600 border border-gray-300 rounded-md px-3 py-2">
+                                {{ this.profile.name }}
+                            </p>
+                        </div>
+                        <div class="flex justify-between mt-2">
+                            <p class="text-sm text-gray-600 self-center">
+                                Email
+                            </p>
+                            <p
+                                class="text-sm text-right overflow-auto text-gray-600 border border-gray-300 rounded-md px-3 py-2">
+                                {{ this.profile.email }}
+                            </p>
+                        </div>
+                        <div class="flex justify-between mt-2">
+                            <p class="text-sm text-gray-600 self-center">
+                                Nomor HP
+                            </p>
+                            <p
+                                class="text-sm w-36 text-right text-gray-600 border border-gray-300 rounded-md px-3 py-2">
+                                {{ this.profile.phone_number }}
+                            </p>
+                        </div>
+                        <div class="flex justify-between mt-2">
+                            <p class="text-sm text-gray-600 self-center">
+                                Alamat Sekolah
+                            </p>
+                            <p class="text-sm text-right text-gray-600 border border-gray-300 rounded-md px-3 py-2">
+                                {{ this.profile.school_name }}
+                            </p>
+                        </div>
+                    </div>
+                    <button type="submit" @click.prevent="add" class="
+                          inline-flex
+                          justify-center
+                          py-2
+                          px-4
+                          mt-6
+                          border border-transparent
+                          shadow-sm
+                          text-sm
+                          font-medium
+                          rounded-md
+                          text-white
+                          bg-main
+                          hover:bg-main
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-emerald-300
+                          text-right
+                        ">
+                        <div v-if="!this.loading">
+                            Daftar
+                        </div>
+                        <div v-else class="flex justify-center items-center">
+                            Uploading <img src="../assets/animated/loading-white.svg" width="30" />
+                        </div>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -235,13 +298,36 @@ export default {
     data() {
         return {
             file: null,
-            total: 123000,
-            loading: false
+            profile: {
+                name: "",
+                email: "",
+                phone_number: "",
+                school_name: ""
+            },
+            loading: false,
+            event: {
+                type: 'free'
+            },
         };
     },
     mounted() {
         if (!localStorage.getItem("ppsm-user")) {
             window.location.href = "/login-user"
+        } else {
+            const eventId = this.$route.params.eventId;
+            axios.get(`https://api.ppsm.or.id/api/events/${eventId}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("ppsm-user")}`
+                }
+            }).then(res => {
+                this.event = res.data.data
+                console.log(this.event);
+            })
+            axios.get(`https://api.ppsm.or.id/api/users/profile`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("ppsm-user")}`
+                }
+            }).then(res => this.profile = res.data.data)
         }
     },
     methods: {
@@ -253,58 +339,114 @@ export default {
             return toRupiahFormat(total)
         },
         add() {
-            this.loading = true;
-            setTimeout(() => {
-                console.log("haha");
+            if (this.event.type === 'free') {
+                this.loading = true;
+                let formData = new FormData()
+                formData.append("event_id", this.$route.params.eventId)
+                formData.append("amount", 0)
+                formData.append("proof_of_payment", "free")
+                axios.post("https://api.ppsm.or.id/api/events/order",
+                    formData,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem("ppsm-user")}`
+                        }
+                    }
+                ).then(res => {
+                    console.log(res);
+                    if (res.data.meta.status_code == 200) {
+                        console.log(res);
+                        this.$swal({
+                            icon: 'success',
+                            title: "Register Success",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        window.location.href = "/order"
+                        this.loading = false;
+
+                    } else {
+                        this.$swal({
+                            icon: 'error',
+                            title: res.meta.message,
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        this.loading = false;
+
+                    }
+                }).catch(e => {
+                    console.log(e);
+                    this.$swal({
+                        icon: 'error',
+                        title: e.response.data.meta.message,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    this.loading = false;
+
+                })
                 this.loading = false;
-            }, 2000)
-            // if (!this.title || !this.about || !this.file || !this.certificateFile || !this.start_time || !this.end_time) {
-            //     this.$swal({
-            //         icon: 'error',
-            //         title: 'Harap Isi Semua Data Terlebih Dahulu',
-            //         showConfirmButton: false,
-            //         timer: 1500
-            //     });
-            // } else {
-            //     let formData = new FormData()
-            //     formData.append("title", this.title)
-            //     formData.append("description", this.about)
-            //     formData.append("start_at", new Date(this.start_time).toISOString())
-            //     formData.append("end_at", new Date(this.end_time).toISOString())
-            //     formData.append("banner", this.file)
-            //     formData.append("certificate", this.certificateFile)
-            //     console.log(formData);
-            //     axios.post("https://api.ppsm.or.id/api/events",
-            //         formData,
-            //         {
-            //             headers: {
-            //                 Authorization: `Bearer ${localStorage.getItem("ppsm-admin")}`
-            //             }
-            //         }
-            //     ).then(res => {
-            //         console.log(res);
-            //         if (res.data.meta.status_code == 200) {
-            //             console.log(res);
-            //             localStorage.setItem("ppsm-user", res.data.data.token)
-            //             window.location.href = "/admin"
-            //         } else {
-            //             this.$swal({
-            //                 icon: 'success',
-            //                 title: res.meta.message,
-            //                 showConfirmButton: false,
-            //                 timer: 1500
-            //             });
-            //         }
-            //     }).catch(e => {
-            //         console.log(e);
-            //         this.$swal({
-            //             icon: 'error',
-            //             title: e.response.data.meta.message,
-            //             showConfirmButton: false,
-            //             timer: 1500
-            //         });
-            //     })
-            // }
+
+            } else {
+                this.loading = true;
+                if (!this.event.price || !this.file) {
+                    this.$swal({
+                        icon: 'error',
+                        title: 'Harap Isi Semua Data Terlebih Dahulu',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    this.loading = false;
+
+                } else {
+                    let formData = new FormData()
+                    formData.append("event_id", this.$route.params.eventId)
+                    formData.append("amount", this.event.price)
+                    formData.append("proof_of_payment", this.file)
+                    console.log(formData);
+                    axios.post("https://api.ppsm.or.id/api/events/order",
+                        formData,
+                        {
+                            headers: {
+                                Authorization: `Bearer ${localStorage.getItem("ppsm-user")}`
+                            }
+                        }
+                    ).then(res => {
+                        console.log(res);
+                        if (res.data.meta.status_code == 200) {
+                            this.$swal({
+                                icon: 'success',
+                                title: "Register Success",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            window.location.href = "/order"
+                            this.loading = false;
+
+                        } else {
+                            this.$swal({
+                                icon: 'error',
+                                title: res.meta.message,
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            this.loading = false;
+
+                        }
+                    }).catch(e => {
+                        console.log(e);
+                        this.$swal({
+                            icon: 'error',
+                            title: e.response.data.meta.message,
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        this.loading = false;
+                    })
+                    this.loading = false;
+                }
+            }
         },
     },
 };

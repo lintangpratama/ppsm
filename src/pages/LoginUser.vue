@@ -160,7 +160,7 @@ export default {
         axios.post("https://api.ppsm.or.id/api/auth/login?user=user",
           {
             "email": this.email,
-            "password": "ivanrizkySaputra98r4+",
+            "password": this.password,
           }).then(res => {
             if (res.data.meta.status_code == 200) {
               console.log(res);

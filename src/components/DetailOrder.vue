@@ -3,9 +3,6 @@
     <div class="bg-white shadow overflow-hidden sm:rounded-lg text-left">
         <div class="px-4 py-5 sm:px-6">
             <div class="w-full mx-auto mb-12 text-center">
-                <h2 class="text-3xl mb-2 font-extrabold tracking-tight text-gray-900">
-                    {{ title }}
-                </h2>
                 <p class="
               mt-1
               mb-10
@@ -14,7 +11,7 @@
               mx-auto
               md:mt-2 md:text-base
             ">
-                    {{ convertDate(start_time) }}
+                    Bukti Pembayaran
                 </p>
                 <img :src="imageUrl" class="mx-auto" width="350" alt="event image" />
             </div>
@@ -28,21 +25,15 @@
         <div class="border-t border-gray-200">
             <dl>
                 <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">Title</dt>
+                    <dt class="text-sm font-medium text-gray-500">Status</dt>
                     <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                         {{ title }}
                     </dd>
                 </div>
                 <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">Time</dt>
+                    <dt class="text-sm font-medium text-gray-500">Harga</dt>
                     <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                        {{ convertDate(start_time) }} - {{ convertDate(end_time) }}
-                    </dd>
-                </div>
-                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">Location</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                        <a :href="location" target="_blank">{{ location }}</a>
+                        {{ toRupiahFormat(about || 0) }}
                     </dd>
                 </div>
             </dl>

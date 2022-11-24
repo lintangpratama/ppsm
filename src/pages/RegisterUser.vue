@@ -18,13 +18,11 @@
       </div>
       <form class="mt-8 space-y-6" @submit.prevent="login">
         <input type="hidden" name="remember" value="true" />
-        <div class="rounded-md shadow-sm -space-y-px">
-          <div>
-            <label for="full-name" class="sr-only">Nama Lengkap</label>
+        <div class="rounded-md shadow-sm">
+          <div class="flex flex-col mb-2">
+            <label for="full-name" class="text-xs mr-auto mb-1">Nama Lengkap</label>
             <input id="full-name" name="text" v-model="name" type="text" autocomplete="name" required="true" class="
                 appearance-none
-                rounded-none
-                relative
                 block
                 w-full
                 px-3
@@ -32,7 +30,7 @@
                 border border-gray-300
                 placeholder-gray-500
                 text-gray-900
-                rounded-t-md
+                rounded-md
                 focus:outline-none
                 focus:ring-emerald-400
                 focus:border-emerald-400
@@ -40,12 +38,12 @@
                 sm:text-sm
               " placeholder="Nama Lengkap" />
           </div>
-          <div>
-            <label for="phone-number" class="sr-only">Nomor HP</label>
+          <div class="flex flex-col mb-2">
+            <label for="phone-number" class="text-xs mr-auto mb-1">Nomor HP</label>
             <input id="phone-number" name="phone-number" v-model="phone" type="number" required="true" class="
                 appearance-none
-                rounded-none
-                relative
+                rounded-md
+                
                 block
                 w-full
                 px-3
@@ -53,7 +51,6 @@
                 border border-gray-300
                 placeholder-gray-500
                 text-gray-900
-                
                 focus:outline-none
                 focus:ring-emerald-400
                 focus:border-emerald-400
@@ -61,12 +58,12 @@
                 sm:text-sm
               " placeholder="Nomor HP" />
           </div>
-          <div>
-            <label for="address" class="sr-only">Alamat Asal</label>
+          <div class="flex flex-col mb-2">
+            <label for="address" class="text-xs mr-auto mb-1">Alamat Asal</label>
             <input id="address" name="address" v-model="address" type="text" required="true" class="
                 appearance-none
-                rounded-none
-                relative
+                rounded-md
+                
                 block
                 w-full
                 px-3
@@ -81,12 +78,12 @@
                 sm:text-sm
               " placeholder="Alamat Asal" />
           </div>
-          <div>
-            <label for="school" class="sr-only">Asal Sekolah</label>
+          <div class="flex flex-col mb-2">
+            <label for="school" class="text-xs mr-auto mb-1">Asal Sekolah</label>
             <input id="school" name="school" v-model="school" type="text" class="
                 appearance-none
-                rounded-none
-                relative
+                rounded-md
+                
                 block
                 w-full
                 px-3
@@ -101,12 +98,12 @@
                 sm:text-sm
               " placeholder="Asal Sekolah" />
           </div>
-          <div>
-            <label for="email" class="sr-only">Email</label>
+          <div class="flex flex-col mb-2">
+            <label for="email" class="text-xs mr-auto mb-1">Alamat Email</label>
             <input id="email" name="email" v-model="email" type="text" required="true" class="
                 appearance-none
-                rounded-none
-                relative
+                rounded-md
+                
                 block
                 w-full
                 px-3
@@ -121,12 +118,12 @@
                 sm:text-sm
               " placeholder="Email" />
           </div>
-          <div>
-            <label for="email" class="sr-only">Username</label>
+          <div class="flex flex-col mb-2">
+            <label for="username" class="text-xs mr-auto mb-1">Username</label>
             <input id="username" name="username" v-model="username" type="text" required="true" class="
                 appearance-none
-                rounded-none
-                relative
+                rounded-md
+                
                 block
                 w-full
                 px-3
@@ -141,12 +138,11 @@
                 sm:text-sm
               " placeholder="Username" />
           </div>
-          <div>
-            <label for="email" class="sr-only">Password</label>
+          <div class="flex flex-col mb-2">
+            <label for="password" class="text-xs mr-auto mb-1">Password</label>
             <input id="password" name="password" v-model="password" type="password" required="true" class="
                 appearance-none
-                rounded-none
-                relative
+                rounded-md
                 block
                 w-full
                 px-3
@@ -160,14 +156,16 @@
                 focus:z-10
                 sm:text-sm
               " placeholder="Password" />
+            <p class="text-xs text-left text-black-400">Password harus terdiri dari 8 kata dan memiliki huruf kapital,
+              angka, dan karakter</p>
           </div>
-          <div>
-            <label for="parents-name" class="sr-only">Nama Orang Tua</label>
+          <div class="flex flex-col mb-2">
+            <label for="parents-name" class="text-xs mr-auto mb-1">Nama Orang Tua</label>
             <input id="parents-name" name="parents-name" v-model="parentsName" type="text" autocomplete="name"
               required="true" class="
                 appearance-none
-                rounded-none
-                relative
+                rounded-md
+                
                 block
                 w-full
                 px-3
@@ -182,13 +180,13 @@
                 sm:text-sm
               " placeholder="Nama Orang Tua" />
           </div>
-          <div>
-            <label for="parents-phone" class="sr-only">Nomor HP Orang Tua</label>
+          <div class="flex flex-col mb-2">
+            <label for="parents-phone" class="text-xs mr-auto mb-1">Nomor HP Orang Tua</label>
             <input id="parents-phone" name="parents-phone" v-model="parentsPhone" type="number" autocomplete="phone"
               required="true" class="
                 appearance-none
-                rounded-none
-                relative
+                rounded-md
+                
                 block
                 w-full
                 px-3
@@ -208,7 +206,6 @@
         <div>
           <button @click.prevent="register" type="submit" class="
               group
-              relative
               w-full
               flex
               justify-center
@@ -233,7 +230,6 @@
           </button>
           <div class="
               group
-              relative
               w-full
               flex
               justify-center
@@ -270,6 +266,10 @@ import axios from "axios";
 <script>
 export default {
   methods: {
+    passwordValidation(inputPassword) {
+      var re = /^(?=.*\d)(?=.*[-!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+      return re.test(inputPassword);
+    },
     register() {
       if (!this.name || !this.username || !this.parentsName || !this.email || !this.password || !this.phone || !this.parentsPhone || !this.school || !this.address) {
         this.$swal({
@@ -278,20 +278,28 @@ export default {
           showConfirmButton: false,
           timer: 1500
         });
-      } else {
+      } else if (!this.passwordValidation(this.password)) {
+        this.$swal({
+          icon: 'error',
+          title: 'Password harus terdiri dari 8 kata dan memiliki huruf kapital, angka, dan karakter',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+      else {
+        const nameFull = this.name.split(" ").length === 1 ? `${this.name} ${this.name}` : this.name
         axios.post("https://api.ppsm.or.id/api/auth/register?user=user",
           {
-            "name": this.name,
+            "name": nameFull,
             "username": this.username,
             "parent_name": this.parentsName,
             "email": this.email,
-            "password": "ivanrizkySaputra98r4+",
+            "password": this.password,
             "phone_number": this.phone.toString(),
             "parent_phone_number": this.parentsPhone.toString(),
-            "school_address": this.school,
+            "school_name": this.school,
             "address": this.address
           }).then(res => {
-            console.log(res);
             if (res.data.meta.status_code == 200) {
               this.$swal({
                 icon: 'success',
@@ -320,7 +328,6 @@ export default {
     },
   },
   mounted() {
-    console.log("Haha");
   },
 };
 </script>

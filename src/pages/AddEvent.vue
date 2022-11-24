@@ -246,6 +246,111 @@
                     </div>
                   </div>
                 </div>
+                <div class="col-span-6 sm:col-span-4">
+                  <label for="company-website" class="block text-sm font-medium text-gray-700">
+                    Lokasi
+                  </label>
+                  <div class="mt-1 flex rounded-md shadow-sm">
+                    <input type="text" name="company-website" id="company-website" v-model="title" class="
+                            focus:ring-emerald-300 focus:border-emerald-300
+                            flex-1
+                            block
+                            w-full
+                            rounded-md
+                            sm:text-sm
+                            border-gray-300
+                          " placeholder="Ex: https://meet.google.com/zkw-ckvw-dmi atau lokasi fisik" />
+                  </div>
+                </div>
+                <div class="col-span-6 sm:col-span-4">
+                  <label for="company-website" class="block text-sm font-medium text-gray-700">
+                    Tipe Event
+                  </label>
+                  <div class="mt-1 flex rounded-md shadow-sm">
+                    <select name="company-website" id="company-website" @change="onEventTypeChange" class="
+                          focus:ring-emerald-300 focus:border-emerald-300
+                          flex-1
+                          block
+                          w-full
+                          rounded-md
+                          sm:text-sm
+                          border-gray-300
+                        " placeholder="Ex: Pelatihan Dasar Adobe Premiere Pro">
+                      <option value="free">Gratis</option>
+                      <option value="paid">Berbayar</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div v-if="this.eventType == 'paid'">
+                  <div class="col-span-6 sm:col-span-4 mb-6">
+                    <label for="company-website" class="block text-sm font-medium text-gray-700">
+                      Harga
+                    </label>
+                    <div class="mt-1 flex rounded-md shadow-sm">
+                      <input type="text" name="company-website" id="company-website" v-model="title" class="
+                            focus:ring-emerald-300 focus:border-emerald-300
+                            flex-1
+                            block
+                            w-full
+                            rounded-md
+                            sm:text-sm
+                            border-gray-300
+                          " placeholder="Ex: 20000" />
+                    </div>
+                  </div>
+
+                  <div class="col-span-6 sm:col-span-4 mb-6">
+                    <label for="company-website" class="block text-sm font-medium text-gray-700">
+                      Nama Bank
+                    </label>
+                    <div class="mt-1 flex rounded-md shadow-sm">
+                      <input type="text" name="company-website" id="company-website" v-model="bank_name" class="
+                            focus:ring-emerald-300 focus:border-emerald-300
+                            flex-1
+                            block
+                            w-full
+                            rounded-md
+                            sm:text-sm
+                            border-gray-300
+                          " placeholder="Ex: BCA" />
+                    </div>
+                  </div>
+
+                  <div class="col-span-6 sm:col-span-4 mb-6">
+                    <label for="company-website" class="block text-sm font-medium text-gray-700">
+                      Nama Pemilik Rekening
+                    </label>
+                    <div class="mt-1 flex rounded-md shadow-sm">
+                      <input type="text" name="company-website" id="company-website" v-model="bank_owner" class="
+                            focus:ring-emerald-300 focus:border-emerald-300
+                            flex-1
+                            block
+                            w-full
+                            rounded-md
+                            sm:text-sm
+                            border-gray-300
+                          " placeholder="Ex: BCA" />
+                    </div>
+                  </div>
+
+                  <div class="col-span-6 sm:col-span-4 mb-6">
+                    <label for="company-website" class="block text-sm font-medium text-gray-700">
+                      Nomor Rekening
+                    </label>
+                    <div class="mt-1 flex rounded-md shadow-sm">
+                      <input type="text" name="company-website" id="company-website" v-model="bank_number" class="
+                            focus:ring-emerald-300 focus:border-emerald-300
+                            flex-1
+                            block
+                            w-full
+                            rounded-md
+                            sm:text-sm
+                            border-gray-300
+                          " placeholder="Ex: 2002736182" />
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                 <button type="submit" @click.prevent="add" class="
@@ -290,6 +395,7 @@ export default {
     return {
       file: null,
       certificateFile: null,
+      eventType: "free",
       loading: false,
     };
   },
@@ -306,6 +412,10 @@ export default {
     onFileCertificateChange(event) {
       this.certificateFile = event.target.files[0];
       console.log(this.certificateFile);
+    },
+    onEventTypeChange(event) {
+      this.eventType = event.target.value;
+      console.log(this.eventType);
     },
     add() {
       if (!this.title || !this.about || !this.file || !this.certificateFile || !this.start_time || !this.end_time) {

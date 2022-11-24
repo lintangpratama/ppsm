@@ -26,7 +26,7 @@ export default {
     }
     axios.get("https://api.ppsm.or.id/api/events", {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("ppsm-user")}`
+        Authorization: `Bearer ${localStorage.getItem("ppsm-admin")}`
       }
     }).then(res => {
       this.events = res.data.data
