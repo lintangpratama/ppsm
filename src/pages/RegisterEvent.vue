@@ -312,7 +312,7 @@ export default {
     },
     mounted() {
         if (!localStorage.getItem("ppsm-user")) {
-            window.location.href = "/login-user"
+            window.location.href = "/login"
         } else {
             const eventId = this.$route.params.eventId;
             axios.get(`https://api.ppsm.or.id/api/events/${eventId}`, {

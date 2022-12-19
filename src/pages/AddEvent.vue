@@ -251,7 +251,7 @@
                     Lokasi
                   </label>
                   <div class="mt-1 flex rounded-md shadow-sm">
-                    <input type="text" name="company-website" id="company-website" v-model="title" class="
+                    <input type="text" name="company-website" id="company-website" v-model="location" class="
                             focus:ring-emerald-300 focus:border-emerald-300
                             flex-1
                             block
@@ -288,7 +288,7 @@
                       Harga
                     </label>
                     <div class="mt-1 flex rounded-md shadow-sm">
-                      <input type="text" name="company-website" id="company-website" v-model="title" class="
+                      <input type="text" name="company-website" id="company-website" v-model="price" class="
                             focus:ring-emerald-300 focus:border-emerald-300
                             flex-1
                             block
@@ -330,7 +330,7 @@
                             rounded-md
                             sm:text-sm
                             border-gray-300
-                          " placeholder="Ex: BCA" />
+                          " placeholder="Ex: Lintang Aji Yoga Pratama" />
                     </div>
                   </div>
 
@@ -418,7 +418,8 @@ export default {
       console.log(this.eventType);
     },
     add() {
-      if (!this.title || !this.about || !this.file || !this.certificateFile || !this.start_time || !this.end_time) {
+      console.log(this);
+      if (!this.title || !this.about || !this.file || !this.certificateFile || !this.start_time || !this.end_time || !this.location || !this.eventType) {
         this.$swal({
           icon: 'error',
           title: 'Harap Isi Semua Data Terlebih Dahulu',
@@ -433,39 +434,100 @@ export default {
         formData.append("end_at", new Date(this.end_time).toISOString())
         formData.append("banner", this.file)
         formData.append("certificate", this.certificateFile)
+        formData.append("location", this.location)
+        formData.append("type", this.eventType)
+        formData.append("price", this.price)
+        formData.append("bank_account_number", this.bank_number)
+        formData.append("bank_account_name", this.bank_owner)
+        formData.append("recipient_name", this.bank_name)
         this.loading = true;
-        axios.post("https://api.ppsm.or.id/api/events",
-          formData,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("ppsm-admin")}`
-            }
-          }
-        ).then(res => {
-          this.loading = false;
-          console.log(res);
-          if (res.data.meta.status_code == 200) {
-            console.log(res);
-            localStorage.setItem("ppsm-admin", res.data.data.token)
-            window.location.href = "/admin"
-          } else {
+
+        if (this.eventType === 'paid') {
+          if (!this.price || !this.bank_number || !this.bank_name || !this.bank_owner) {
             this.$swal({
-              icon: 'success',
-              title: res.meta.message,
+              icon: 'error',
+              title: 'Harap Isi Semua Data Pembayaran Terlebih Dahulu',
               showConfirmButton: false,
               timer: 1500
             });
+          } else {
+            axios.post("https://api.ppsm.or.id/api/events",
+              formData,
+              {
+                headers: {
+                  Authorization: `Bearer ${localStorage.getItem("ppsm-admin")}`
+                }
+              }
+            ).then(res => {
+              this.loading = false;
+              console.log(res);
+              if (res.data.meta.status_code == 200) {
+                console.log(res);
+                this.$swal({
+                  icon: 'success',
+                  title: "Event Berhasil Dibuat",
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+                window.location.href = "/admin"
+              } else {
+                this.$swal({
+                  icon: 'error',
+                  title: res.meta.message,
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+              }
+            }).catch(e => {
+              this.loading = false;
+              console.log(e);
+              this.$swal({
+                icon: 'error',
+                title: e.response.data.meta.message,
+                showConfirmButton: false,
+                timer: 1500
+              });
+            })
           }
-        }).catch(e => {
-          this.loading = false;
-          console.log(e);
-          this.$swal({
-            icon: 'error',
-            title: e.response.data.meta.message,
-            showConfirmButton: false,
-            timer: 1500
-          });
-        })
+        } else if (this.eventType === 'free') {
+          axios.post("https://api.ppsm.or.id/api/events",
+            formData,
+            {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("ppsm-admin")}`
+              }
+            }
+          ).then(res => {
+            this.loading = false;
+            console.log(res);
+            if (res.data.meta.status_code == 200) {
+              console.log(res);
+              this.$swal({
+                icon: 'success',
+                title: "Event Berhasil Dibuat",
+                showConfirmButton: false,
+                timer: 1500
+              });
+              window.location.href = "/admin"
+            } else {
+              this.$swal({
+                icon: 'success',
+                title: res.meta.message,
+                showConfirmButton: false,
+                timer: 1500
+              });
+            }
+          }).catch(e => {
+            this.loading = false;
+            console.log(e);
+            this.$swal({
+              icon: 'error',
+              title: e.response.data.meta.message,
+              showConfirmButton: false,
+              timer: 1500
+            });
+          })
+        }
       }
     },
   },

@@ -90,7 +90,7 @@ export default {
   },
   methods: {
     accept(id) {
-      axios.post(`https://api.ppsm.or.id/api/events/order/confirm/${id}`,
+      axios.put(`https://102d-202-80-218-238.ngrok.io/api/events/order/confirm/${id}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("ppsm-admin")}`
@@ -126,7 +126,7 @@ export default {
       })
     },
     decline(id) {
-      axios.post(`https://api.ppsm.or.id/api/events/order/confirm/${id}`,
+      axios.put(`https://102d-202-80-218-238.ngrok.io/api/events/order/confirm/${id}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("ppsm-admin")}`
