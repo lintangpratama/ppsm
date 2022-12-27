@@ -6,7 +6,7 @@
         My <span class="text-main">Events</span>
       </h2>
 
-      <div v-if="this.events !== null">
+      <div v-if="events !== null">
         <div class="
           mt-6
           grid grid-cols-1
@@ -15,7 +15,7 @@
           lg:grid-cols-4
           xl:gap-x-8
         ">
-          <div v-for="product in this.events" :key="product.id" class="group relative">
+          <div v-for="product in events" :key="product.id" class="group relative">
             <div class="
                 w-full
                 min-h-80

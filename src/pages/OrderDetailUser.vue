@@ -9,7 +9,7 @@
     <Navbar />
   </div>
   <div class="max-w-2xl mx-auto py-6 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
-    <DetailOrder :id="this.$route.params.orderId" :title="event.status" :about="event.amount"
+    <DetailOrder :id="event.id" :title="event.status" :about="event.amount"
       :imageUrl="event.proof_of_payment" :link="event.link" :location="event?.event?.location" />
   </div>
 </template>
