@@ -34,6 +34,7 @@ export default {
   },
   async mounted() {
     const eventId = this.$route.params.eventId;
+    console.log("ini adalah event id", eventId)
     axios.get(`https://api.ppsm.or.id/api/events/${eventId}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("ppsm-user")}`
