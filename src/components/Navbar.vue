@@ -36,8 +36,9 @@
           ">
           <router-link to="/">
             <div class="flex-shrink-0 flex items-center">
-              <img class="block lg:hidden h-8 w-auto" src="../assets/logo.svg" alt="Workflow" />
-              <img class="hidden lg:block h-8 w-auto" src="../assets/logo-with-text.svg" alt="Workflow" />
+              <!-- <img class="block lg:hidden h-8 w-auto" src="../assets/logo.svg" alt="Workflow" />
+              <img class="hidden lg:block h-8 w-auto" src="../assets/logo-with-text.svg" alt="Workflow" /> -->
+              <p class="text-main text-2xl font-bold">PPSM</p>
             </div>
           </router-link>
           <div class="hidden sm:block sm:ml-6">
