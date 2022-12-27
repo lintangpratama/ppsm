@@ -36,7 +36,7 @@
         <div v-for="user in events" class="border-t border-gray-200">
           <dl class="border border-b-2">
             <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-500">{{ "Lintang" }}</dt>
+              <dt class="text-sm font-medium text-gray-500">{{ user.user.name }}</dt>
               <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 flex sm:flex-row flex-col justify-between">
                 <a class="mt-4 sm:mt-0" :href="user.proof_of_payment" target="_blank">
                   <span>Bukti Pembayaran</span>
@@ -49,6 +49,11 @@
                   <p @click="decline(user.id)"
                     class="bg-red-500 text-white mr-3 h-9 pt-2 px-3 rounded-lg hover:bg-red-600 active:bg-red-700 cursor-pointer">
                     Tolak</p>
+                </div>
+                <div v-else-if="user.status === 'REJECT'">
+                  <p
+                    class="bg-red-500 text-white mr-3 h-9 pt-2 px-3 rounded-lg hover:bg-green-600 active:bg-green-700 cursor-pointer">
+                    Ditolak</p>
                 </div>
                 <div v-else class="flex mt-6 sm:mt-0">
                   <p
@@ -90,22 +95,27 @@ export default {
   },
   methods: {
     accept(id) {
-      axios.put(`https://102d-202-80-218-238.ngrok.io/api/events/order/confirm/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("ppsm-admin")}`
-          }
+      axios.put(`https://api.ppsm.or.id/api/events/order/confirm/${id}`, null, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("ppsm-admin")}`
         }
+      }
       ).then(res => {
         if (res.data.meta.status_code == 200) {
-          console.log(res);
           this.$swal({
             icon: 'success',
             title: res.meta.message,
             showConfirmButton: false,
             timer: 1500
           });
-          window.location.reload()
+          axios.get(`https://api.ppsm.or.id/api/events/order/event/${this.$route.params.eventId}`, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("ppsm-admin")}`
+            }
+          }).then(res => {
+            this.events = res.data.data
+            console.log(this.events);
+          })
         } else {
           this.$swal({
             icon: 'error',
@@ -126,12 +136,11 @@ export default {
       })
     },
     decline(id) {
-      axios.put(`https://102d-202-80-218-238.ngrok.io/api/events/order/confirm/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("ppsm-admin")}`
-          }
+      axios.put(`https://api.ppsm.or.id/api/events/order/reject/${id}`, null, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("ppsm-admin")}`
         }
+      }
       ).then(res => {
         if (res.data.meta.status_code == 200) {
           console.log(res);
@@ -141,7 +150,14 @@ export default {
             showConfirmButton: false,
             timer: 1500
           });
-          window.location.reload()
+          axios.get(`https://api.ppsm.or.id/api/events/order/event/${this.$route.params.eventId}`, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("ppsm-admin")}`
+            }
+          }).then(res => {
+            this.events = res.data.data
+            console.log(this.events);
+          })
         } else {
           this.$swal({
             icon: 'error',
