@@ -9,7 +9,7 @@
     <Navbar />
   </div>
   <div class="max-w-2xl mx-auto py-6 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
-    <DetailEvent :id="this.$route.params.eventId" :title="event.title" :about="event.description"
+    <DetailEvent :id="this.$route?.params?.eventId" :title="event.title" :about="event.description"
       :end_time="event.end_at" :start_time="event.start_at" :imageUrl="event.banner" :link="event.link"
       :location="event.location" :type="event.type" :price="event.price" />
   </div>
